@@ -450,6 +450,17 @@
 <div id="page-num">1 / 4</div>
 
 <script>
+  // 預先載入所有音效
+const audioFiles = {
+  truck: new Audio('audio/03_truck.mp3'),
+  birds: new Audio('audio/05_birds.mp3'),
+  seeder: new Audio('audio/05_truck.mp3'),
+};
+audioFiles.truck.load();
+audioFiles.birds.load();
+audioFiles.seeder.load();
+
+
 // ====== 初始化 turn.js（v2 模式）======
 $(document).ready(function() {
   $('#book').turn({
@@ -474,7 +485,8 @@ $(document).ready(function() {
 let smokeTimer;
 
 function truckInteract() {
-  new Audio('audio/03_truck.mp3').play();  // 
+  audioFiles.truck.currentTime = 0;
+  audioFiles.truck.play();
   const truck = document.getElementById('truck');
   truck.style.animation = 'none';
   void truck.offsetWidth;
@@ -548,7 +560,8 @@ setTimeout(() => {
 
 // ====== 白鷺鷥互動 ======
 function birdInteract() {
-  new Audio('audio/05_birds.mp3').play();  // 
+  audioFiles.birds.currentTime = 0;
+  audioFiles.birds.play();
   document.querySelectorAll('.bird').forEach(bird => {
     const delay = Math.random() * 400;
     const distance = (bird.id === 'bird-9' || bird.id === 'bird-8')
@@ -573,7 +586,8 @@ document.querySelectorAll('.bird').forEach(bird => {
 
 // ====== 播種機互動 ======
 function seederInteract() {
-  new Audio('audio/05_truck.mp3').play();  //
+  audioFiles.seeder.currentTime = 0;
+  audioFiles.seeder.play();
   const seeder = document.getElementById('seeder');
   seeder.style.animation = 'none';
   void seeder.offsetWidth;
