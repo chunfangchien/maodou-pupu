@@ -46,9 +46,9 @@
   }
 
   .nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
+    top: auto;
+    transform: none;
     background: rgba(255,255,255,0.2);
     border: none;
     color: white;
@@ -61,8 +61,8 @@
     transition: background 0.2s;
   }
   .nav-btn:hover { background: rgba(255,255,255,0.4); }
-  #btn-prev { left: -60px; }
-  #btn-next { right: -60px; }
+  #btn-prev { left: auto; right: auto; }
+  #btn-next { left: auto; right: auto; }
 
   #page-num {
     margin-top: 14px;
@@ -255,7 +255,7 @@
 <body>
 
 <div id="book-container">
-  <button class="nav-btn" id="btn-prev">‹</button>
+ 
 
   <div id="book">
 
@@ -444,10 +444,15 @@
 
   </div>
 
-  <button class="nav-btn" id="btn-next">›</button>
+  
 </div>
 
 <div id="page-num">1 / 4</div>
+
+<div style="display:flex; gap: 250px; margin-top:12px;">
+ <button class="nav-btn" id="btn-prev">‹</button>
+ <button class="nav-btn" id="btn-next">›</button>
+ </div>
 
 <script>
   // 預先載入所有音效
