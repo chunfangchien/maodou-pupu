@@ -91,11 +91,13 @@
     100% { transform: translate(-30px, -50px); opacity: 0; }
   }
 
- @keyframes smokeRight {
+@keyframes smokeRight {
   0%   { opacity: 0; transform: translate(0, 0); }
-  30%  { opacity: 1; transform: translate(10px, -15px); }
+  50%  { opacity: 1; transform: translate(10px, -15px); }
   100% { opacity: 0; transform: translate(30px, -50px); }
- }
+}
+
+
  @keyframes smokeFadeInOut {
   0%   { opacity: 0; transform: translate(0, 0); }
   40%  { opacity: 1; transform: translate(-8px, -10px); }
@@ -449,7 +451,7 @@
 
 <div id="page-num">1 / 4</div>
 
-<div style="display:flex; gap: 250px; margin-top:12px;">
+<div style="display:flex; gap: 180px; margin-top:12px;">
  <button class="nav-btn" id="btn-prev">‹</button>
  <button class="nav-btn" id="btn-next">›</button>
  </div>
@@ -460,10 +462,14 @@ const audioFiles = {
   truck: new Audio('audio/03_truck.mp3'),
   birds: new Audio('audio/05_birds.mp3'),
   seeder: new Audio('audio/05_truck.mp3'),
+  nextPage: new Audio('audio/next_page.mp3'),
+  prevPage: new Audio('audio/previous_page.mp3'),
 };
 audioFiles.truck.load();
 audioFiles.birds.load();
 audioFiles.seeder.load();
+audioFiles.nextPage.load();
+audioFiles.prevPage.load();
 
 
 // ====== 初始化 turn.js（v2 模式）======
@@ -482,8 +488,16 @@ $(document).ready(function() {
     }
   });
 
-  $('#btn-prev').click(function() { $('#book').turn('previous'); });
-  $('#btn-next').click(function() { $('#book').turn('next'); });
+ $('#btn-prev').click(function() {
+  audioFiles.prevPage.currentTime = 0;
+  audioFiles.prevPage.play();
+  $('#book').turn('previous');
+ });
+ $('#btn-next').click(function() {
+  audioFiles.nextPage.currentTime = 0;
+  audioFiles.nextPage.play();
+  $('#book').turn('next');
+ });
 });
 
 // ====== 曳引機互動 ======
@@ -532,11 +546,12 @@ for(let i = 4; i >= 1; i--) {
 
 // 煙霧 5 往右上飄，跑兩遍
 const smoke5 = document.getElementById('smoke-5');
+smoke5.style.transition = 'none';
 smoke5.style.animation = 'none';
-smoke5.style.opacity = '1';
-void smoke5.offsetWidth;
 smoke5.style.opacity = '0';
+smoke5.style.transform = 'translate(0, 0)';
 void smoke5.offsetWidth;
+void smoke5.offsetWidth; // 多一次確保瀏覽器完全重置
 
 // 第一遍
 smoke5.style.animation = 'smokeRight 1.2s ease forwards';
