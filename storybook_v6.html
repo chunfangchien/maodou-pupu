@@ -237,6 +237,19 @@
   100% { opacity: 0.2; transform: scale(0.9); }
 }
 
+/* 手機版：自動縮放書本 */
+@media (max-width: 960px) {
+  body {
+    padding: 10px;
+  }
+
+  #book-container {
+    transform-origin: top center;
+    transform: scale(calc(100vw / 960px));
+    margin-bottom: calc((500px * (100vw / 960px)) - 500px);
+  }
+}
+
 </style>
 </head>
 <body>
