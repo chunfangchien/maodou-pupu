@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毛豆噗噗</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="turn.min.js"></script>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2c2c2c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+
+  #book-container {
+    position: relative;
+    width: 900px;
+    height: 500px;
+  }
+
+  #book {
+    width: 900px;
+    height: 500px;
+  }
+
+  .page {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .page img.bg {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+  }
+
+  .nav-btn {
+    position: relative;
+    top: auto;
+    transform: none;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    transition: background 0.2s;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.4); }
+  #btn-prev { left: auto; right: auto; }
+  #btn-next { left: auto; right: auto; }
+
+  #page-num {
+    margin-top: 14px;
+    color: #aaa;
+    font-size: 13px;
+  }
+
+  /* ====== 動畫 ====== */
+
+  @keyframes truckDrive {
+    0%   { transform: translateY(0);    }
+    2%   { transform: translateY(-2px); }
+    4%   { transform: translateY(2px);  }
+    6%   { transform: translateY(-2px); }
+    8%   { transform: translateY(2px);  }
+    10%  { transform: translateY(-2px); }
+    12%  { transform: translateY(2px);  }
+    14%  { transform: translateY(-2px); }
+    16%  { transform: translateY(2px);  }
+    18%  { transform: translateY(-2px); }
+    20%  { transform: translateY(2px);  }
+    22%  { transform: translateY(-2px); }
+    24%  { transform: translateY(2px);  }
+    26%  { transform: translateY(-2px); }
+    28%  { transform: translateY(2px);  }
+    30%  { transform: translateY(-2px); }
+    32%  { transform: translateY(2px);  }
+    34%  { transform: translateY(-2px); }
+    36%  { transform: translateY(2px);  }
+    38%  { transform: translateY(-2px); }
+    40%  { transform: translateY(2px);  }
+    42%  { transform: translateY(-2px); }
+    44%  { transform: translateY(2px);  }
+    46%  { transform: translateY(-2px); }
+    48%  { transform: translateY(2px);  }
+    50%  { transform: translateY(-2px); }
+    52%  { transform: translateY(2px);  }
+    54%  { transform: translateY(-2px); }
+    56%  { transform: translateY(2px);  }
+    58%  { transform: translateY(-2px); }
+    60%  { transform: translateY(2px);  }
+    62%  { transform: translateY(-2px); }
+    64%  { transform: translateY(2px);  }
+    66%  { transform: translateY(-2px); }
+    68%  { transform: translateY(2px);  }
+    70%  { transform: translateY(-2px); }
+    72%  { transform: translateY(2px);  }
+    74%  { transform: translateY(-2px); }
+    76%  { transform: translateY(2px);  }
+    78%  { transform: translateY(-2px); }
+    80%  { transform: translateY(2px);  }
+    82%  { transform: translateY(-2px); }
+    84%  { transform: translateY(2px);  }
+    86%  { transform: translateY(-2px); }
+    88%  { transform: translateY(2px);  }
+    90%  { transform: translateY(-2px); }
+    92%  { transform: translateY(2px);  }
+    94%  { transform: translateY(-2px); }
+    96%  { transform: translateY(2px);  }
+    98%  { transform: translateY(-2px); }
+    100% { transform: translateY(0);    }
+  }
+
+  @keyframes groupDrive {
+    0%   { opacity: 1; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes smokeRight {
+    0%   { opacity: 0; transform: translate(0, 0); }
+    50%  { opacity: 1; transform: translate(10px, -15px); }
+    100% { opacity: 0; transform: translate(30px, -50px); }
+  }
+
+  @keyframes smokeFadeInOut {
+    0%   { opacity: 0; transform: translate(0, 0); }
+    40%  { opacity: 1; transform: translate(-8px, -10px); }
+    100% { opacity: 0; transform: translate(-20px, -25px); }
+  }
+
+  @keyframes birdHop {
+    0%   { transform: translate(0, 0); }
+    30%  { transform: translate(var(--dx), -12px); }
+    60%  { transform: translate(var(--dx), -4px); }
+    80%  { transform: translate(var(--dx), -8px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  @keyframes seederShake {
+    0%   { transform: translateY(0); }
+    5%   { transform: translateY(-2px); }
+    10%  { transform: translateY(2px); }
+    15%  { transform: translateY(-2px); }
+    20%  { transform: translateY(2px); }
+    25%  { transform: translateY(-2px); }
+    30%  { transform: translateY(2px); }
+    35%  { transform: translateY(-2px); }
+    40%  { transform: translateY(2px); }
+    45%  { transform: translateY(-2px); }
+    50%  { transform: translateY(2px); }
+    55%  { transform: translateY(-2px); }
+    60%  { transform: translateY(2px); }
+    65%  { transform: translateY(-2px); }
+    70%  { transform: translateY(2px); }
+    75%  { transform: translateY(-2px); }
+    80%  { transform: translateY(2px); }
+    85%  { transform: translateY(-2px); }
+    90%  { transform: translateY(2px); }
+    95%  { transform: translateY(-1px); }
+    100% { transform: translateY(0); }
+  }
+
+@keyframes seederDrive {
+  /* 慢慢往右移動 */
+  0%   { transform: translateX(0)    translateY(0);    }
+  2%   { transform: translateX(2px)  translateY(-2px); }
+  4%   { transform: translateX(4px)  translateY(2px);  }
+  6%   { transform: translateX(6px)  translateY(-2px); }
+  8%   { transform: translateX(8px)  translateY(2px);  }
+  10%  { transform: translateX(10px) translateY(-2px); }
+  12%  { transform: translateX(12px) translateY(2px);  }
+  14%  { transform: translateX(14px) translateY(-2px); }
+  16%  { transform: translateX(16px) translateY(2px);  }
+  18%  { transform: translateX(18px) translateY(-2px); }
+  20%  { transform: translateX(20px) translateY(2px);  }
+
+  /* 停在原地以固定頻率震動 */
+  22%  { transform: translateX(20px) translateY(-2px); }
+  24%  { transform: translateX(20px) translateY(2px);  }
+  26%  { transform: translateX(20px) translateY(-2px); }
+  28%  { transform: translateX(20px) translateY(2px);  }
+  30%  { transform: translateX(20px) translateY(-2px); }
+  32%  { transform: translateX(20px) translateY(2px);  }
+  34%  { transform: translateX(20px) translateY(-2px); }
+  36%  { transform: translateX(20px) translateY(2px);  }
+  38%  { transform: translateX(20px) translateY(-2px); }
+  40%  { transform: translateX(20px) translateY(2px);  }
+  42%  { transform: translateX(20px) translateY(-2px); }
+  44%  { transform: translateX(20px) translateY(2px);  }
+  46%  { transform: translateX(20px) translateY(-2px); }
+  48%  { transform: translateX(20px) translateY(2px);  }
+  50%  { transform: translateX(20px) translateY(-2px); }
+  52%  { transform: translateX(20px) translateY(2px);  }
+  54%  { transform: translateX(20px) translateY(-2px); }
+  56%  { transform: translateX(20px) translateY(2px);  }
+  58%  { transform: translateX(20px) translateY(-2px); }
+  60%  { transform: translateX(20px) translateY(2px);  }
+  62%  { transform: translateX(20px) translateY(-2px); }
+  64%  { transform: translateX(20px) translateY(2px);  }
+  66%  { transform: translateX(20px) translateY(-2px); }
+  68%  { transform: translateX(20px) translateY(2px);  }
+  70%  { transform: translateX(20px) translateY(-2px); }
+  72%  { transform: translateX(20px) translateY(2px);  }
+  74%  { transform: translateX(20px) translateY(-2px); }
+  76%  { transform: translateX(20px) translateY(2px);  }
+  78%  { transform: translateX(20px) translateY(-2px); }
+  80%  { transform: translateX(20px) translateY(2px);  }
+  82%  { transform: translateX(20px) translateY(-2px); }
+  84%  { transform: translateX(20px) translateY(2px);  }
+  86%  { transform: translateX(20px) translateY(-2px); }
+  88%  { transform: translateX(20px) translateY(2px);  }
+  90%  { transform: translateX(20px) translateY(-2px); }
+  92%  { transform: translateX(20px) translateY(2px);  }
+  94%  { transform: translateX(20px) translateY(-2px); }
+  96%  { transform: translateX(20px) translateY(2px);  }
+  98%  { transform: translateX(20px) translateY(-2px); }
+  100% { transform: translateX(20px) translateY(0);    }
+}
+
+@keyframes cloudFloat {
+  0%   { transform: translateY(0); }
+  12%  { transform: translateY(-6px); }
+  25%  { transform: translateY(0); }
+  37%  { transform: translateY(-6px); }
+  50%  { transform: translateY(0); }
+  62%  { transform: translateY(-6px); }
+  75%  { transform: translateY(0); }
+  87%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+  @keyframes rainFadeIn {
+    0%   { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes plantSway {
+    0%   { transform: rotate(0deg); }
+    20%  { transform: rotate(-3deg); }
+    40%  { transform: rotate(3deg); }
+    60%  { transform: rotate(-2deg); }
+    80%  { transform: rotate(2deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  @keyframes sunRotate {
+    0%   { transform: rotate(0deg); }
+    50%  { transform: rotate(8deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  @keyframes shine {
+    0%   { opacity: 0; transform: scale(0.8); }
+    50%  { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(0.8); }
+  }
+
+  @keyframes leafLeft {
+    0%   { transform: rotate(0deg); }
+    15%  { transform: rotate(-15deg); }
+    30%  { transform: rotate(0deg); }
+    45%  { transform: rotate(-10deg); }
+    60%  { transform: rotate(0deg); }
+    75%  { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  @keyframes leafRight {
+    0%   { transform: rotate(0deg); }
+    15%  { transform: rotate(15deg); }
+    30%  { transform: rotate(0deg); }
+    45%  { transform: rotate(10deg); }
+    60%  { transform: rotate(0deg); }
+    75%  { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  @keyframes flowerSway {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
+  }
+
+  @keyframes plantVibrate {
+    0%   { transform: translateY(0); }
+    20%  { transform: translateY(-1px); }
+    40%  { transform: translateY(1px); }
+    60%  { transform: translateY(-1px); }
+    80%  { transform: translateY(1px); }
+    100% { transform: translateY(0); }
+  }
+
+  @keyframes moonFloat {
+    0%   { transform: translateY(0); }
+    25%  { transform: translateY(-12px); }
+    50%  { transform: translateY(0); }
+    75%  { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+  }
+
+  @keyframes starTwinkle {
+    0%   { opacity: 0.2; transform: scale(0.9); }
+    50%  { opacity: 1;   transform: scale(1.1); }
+    100% { opacity: 0.2; transform: scale(0.9); }
+  }
+
+  /* 手機版：自動縮放書本 */
+  @media (max-width: 960px) {
+    body { padding: 10px; }
+    #book-container {
+      transform-origin: top center;
+      transform: scale(calc(100vw / 960px));
+      margin-bottom: calc((500px * (100vw / 960px)) - 500px);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="book-container">
+  <div id="book">
+
+    <!-- 封面 -->
+    <div class="page" style="background:#2c2c2c; display:flex; align-items:center; justify-content:center;">
+      <img src="images/00-Cover.jpg" alt="封面"
+           style="height:100%; width:auto; object-fit:contain;">
+    </div>
+
+    <!-- 03 跨頁 -->
+    <div class="page" style="position:relative;">
+      <img class="bg" src="images/03_Background.jpg" alt="">
+
+      <div id="truck-group" style="position:absolute; inset:0; pointer-events:none;">
+        <img src="images/03_truck.png" id="truck"
+             onclick="truckInteract()"
+             style="position:absolute; bottom:8%; right:40px; height:26%; cursor:pointer; pointer-events:auto;">
+
+        <img src="images/03_smoke-1.png" id="smoke-1"
+             style="position:absolute; bottom:16%; right:60%; height:7%; pointer-events:none;">
+        <img src="images/03_smoke-2.png" id="smoke-2"
+             style="position:absolute; bottom:10%; right:52.5%; height:7%; pointer-events:none;">
+        <img src="images/03_smoke-3.png" id="smoke-3"
+             style="position:absolute; bottom:15%; right:42.5%; height:7%; pointer-events:none;">
+        <img src="images/03_smoke-4.png" id="smoke-4"
+             style="position:absolute; bottom:6.5%; right:35%; height:7%; pointer-events:none;">
+        <img src="images/03_smoke-5.png" id="smoke-5"
+             style="position:absolute; bottom:30%; right:4%; height:7%; pointer-events:none;">
+      </div>
+    </div>
+
+    <!-- 05 跨頁 -->
+    <div class="page" style="position:relative;">
+      <img class="bg" src="images/05_Background.png" alt="">
+
+      <img src="images/05_bird-1.png" class="bird" id="bird-1"
+           style="position:absolute; bottom:33%; left:13%; height:12%; cursor:pointer;">
+      <img src="images/05_bird-2.png" class="bird" id="bird-2"
+           style="position:absolute; bottom:11%; left:16.5%; height:15%; cursor:pointer;">
+      <img src="images/05_bird-3.png" class="bird" id="bird-3"
+           style="position:absolute; bottom:25%; left:21.5%; height:23%; cursor:pointer;">
+      <img src="images/05_bird-4.png" class="bird" id="bird-4"
+           style="position:absolute; bottom:46%; left:29.5%; height:20%; cursor:pointer;">
+      <img src="images/05_bird-5.png" class="bird" id="bird-5"
+           style="position:absolute; bottom:40%; left:40%; height:13%; cursor:pointer;">
+      <img src="images/05_bird-6.png" class="bird" id="bird-6"
+           style="position:absolute; bottom:23%; left:37.5%; height:15%; cursor:pointer;">
+      <img src="images/05_bird-7.png" class="bird" id="bird-7"
+           style="position:absolute; bottom:11%; left:41.5%; height:13%; cursor:pointer;">
+      <img src="images/05_bird-8.png" class="bird" id="bird-8" data-dir="left"
+           style="position:absolute; bottom:23%; left:45.5%; height:10%; cursor:pointer;">
+      <img src="images/05_bird-9.png" class="bird" id="bird-9" data-dir="left"
+           style="position:absolute; bottom:35%; left:51.5%; height:20%; cursor:pointer;">
+      <img src="images/05_bird-10.png" class="bird" id="bird-10"
+           style="position:absolute; bottom:19%; left:53.5%; height:15%; cursor:pointer;">
+      <img src="images/05_truck.png" id="seeder"
+           onclick="seederInteract()"
+           style="position:absolute; bottom:23.5%; right:10%; height:38%; cursor:pointer;">
+      <img src="images/05_bird-11.png" class="bird" id="bird-11"
+           style="position:absolute; bottom:31%; left:59%; height:15%; cursor:pointer;">
+
+      
+    </div>
+
+    <!-- 07 跨頁 -->
+    <div class="page" style="position:relative;">
+      <img class="bg" src="images/07_Background.png" alt="">
+
+      <!-- 植物 1 -->
+      <img src="images/07_plant-1.png" id="plant-1"
+           style="position:absolute; bottom:50px; left:61px; height:6%;">
+
+      <!-- 植物 2 + 雲 + 雨 -->
+      <img src="images/07_plant-2.png" id="plant-2"
+           onclick="weatherInteract()"
+           style="position:absolute; bottom:19px; left:23%; height:16%; cursor:pointer;">
+      <img src="images/07_cloud.png" id="cloud"
+           onclick="weatherInteract()"
+           style="position:absolute; bottom:28%; left:15%; height:32%; cursor:pointer;">
+      <img src="images/07_rain.png" id="rain"
+           onclick="weatherInteract()"
+           style="position:absolute; bottom:17%; left:14%; height:22%; pointer-events:none; opacity:1;">
+
+      <!-- 植物 3 + 太陽 + 閃亮 -->
+      <img src="images/07_plant-3.png" id="plant-3"
+           onclick="sunInteract()"
+           style="position:absolute; bottom:6px; left:38.5%; height:20%; cursor:pointer;">
+      <div id="sun-wrapper"
+           onclick="sunInteract()"
+           style="position:absolute; bottom:52%; left:35%; width:26%; cursor:pointer;">
+        <img src="images/07_sun.png" id="sun"
+             style="width:100%; height:auto; transform-origin: 50% 50%;">
+      </div>
+      <img src="images/07_shine-1.png" id="shine-1"
+           onclick="sunInteract()"
+           style="position:absolute; bottom:33%; left:39%; height:12%; cursor:pointer; opacity:1;">
+      <img src="images/07_shine-2.png" id="shine-2"
+           onclick="sunInteract()"
+           style="position:absolute; bottom:26%; left:56%; height:3%; cursor:pointer; opacity:1;">
+      <img src="images/07_shine-3.png" id="shine-3"
+           onclick="sunInteract()"
+           style="position:absolute; bottom:13%; left:52%; height:11%; cursor:pointer; opacity:1;">
+
+      <!-- 植物 4 -->
+      <img src="images/07_plant-4.png" id="plant-4"
+           style="position:absolute; bottom:0; left:54%; height:26%;">
+
+      <!-- 植物 5 -->
+      <img src="images/07_plant-5-1.png" id="plant-5-1"
+           style="position:absolute; bottom:0%; left:53.5%; height:83%;">
+      <img src="images/07_plant-5-3.png" id="plant-5-3"
+           style="position:absolute; bottom:2%; left:54.2%; height:80%;">
+      <img src="images/07_plant-5-2.png" id="plant-5-2"
+           style="position:absolute; bottom:4%; left:55.3%; height:76%;">
+      <img src="images/07_plant-5-4.png" id="plant-5-4"
+           onclick="plant5Interact()"
+           style="position:absolute; bottom:44%; left:57%; height:26%; cursor:pointer; transform-origin: 60% 50%;">
+      <img src="images/07_plant-5-5.png" id="plant-5-5"
+           onclick="plant5Interact()"
+           style="position:absolute; bottom:51%; left:75%; height:26%; cursor:pointer; transform-origin: 50% 60%;">
+
+      <!-- 植物 6 + 月亮 + 星星 -->
+      <img src="images/07_moon.png" id="moon"
+           onclick="nightInteract()"
+           style="position:absolute; bottom:43%; left:92%; height:15%; cursor:pointer;">
+      <img src="images/07_plant-6-1.png" id="plant-6-1"
+           style="position:absolute; bottom:0; left:71%; height:100%;">
+      <img src="images/07_plant-6-2.png" id="plant-6-2"
+           onclick="nightInteract()"
+           style="position:absolute; bottom:69%; left:75%; height:26%; cursor:pointer; transform-origin: 60% 50%;">
+      <img src="images/07_plant-6-3.png" id="plant-6-3"
+           onclick="nightInteract()"
+           style="position:absolute; bottom:63%; left:88%; height:26%; cursor:pointer; transform-origin: 50% 60%;">
+      <img src="images/07_plant-6-4.png" id="plant-6-4"
+           onclick="nightInteract()"
+           style="position:absolute; bottom:21%; left:83.5%; height:39%; cursor:pointer;">
+      <img src="images/07_star-1.png" id="star-1" onclick="nightInteract()"
+           style="position:absolute; bottom:17%; left:88%; height:2%; cursor:pointer;">
+      <img src="images/07_star-2.png" id="star-2" onclick="nightInteract()"
+           style="position:absolute; bottom:39%; left:97.5%; height:1.5%; cursor:pointer;">
+      <img src="images/07_star-3.png" id="star-3" onclick="nightInteract()"
+           style="position:absolute; bottom:62%; left:95%; height:1.5%; cursor:pointer;">
+      <img src="images/07_star-4.png" id="star-4" onclick="nightInteract()"
+           style="position:absolute; bottom:45%; left:83%; height:1.5%; cursor:pointer;">
+      <img src="images/07_star-5.png" id="star-5" onclick="nightInteract()"
+           style="position:absolute; bottom:93%; left:96%; height:1.5%; cursor:pointer;">
+      <img src="images/07_star-6.png" id="star-6" onclick="nightInteract()"
+           style="position:absolute; bottom:25%; left:82%; height:1.5%; cursor:pointer;">
+      <img src="images/07_star-7.png" id="star-7" onclick="nightInteract()"
+           style="position:absolute; bottom:18%; left:98%; height:1%; cursor:pointer;">
+      <img src="images/07_star-8.png" id="star-8" onclick="nightInteract()"
+           style="position:absolute; bottom:90%; left:91%; height:1%; cursor:pointer;">
+    </div>
+
+  </div>
+</div>
+
+<div id="page-num">1 / 4</div>
+
+<div style="display:flex; gap:180px; margin-top:12px;">
+  <button class="nav-btn" id="btn-prev">‹</button>
+  <button class="nav-btn" id="btn-next">›</button>
+</div>
+
+<script>
+// 預先載入所有音效
+const audioFiles = {
+  truck: new Audio('audio/03_truck.mp3'),
+  birds: new Audio('audio/05_birds.mp3'),
+  seeder: new Audio('audio/05_truck.mp3'),
+  nextPage: new Audio('audio/next_page.mp3'),
+  prevPage: new Audio('audio/previous_page.mp3'),
+  cloud: new Audio('audio/07_cloud.mp3'),
+  sun: new Audio('audio/07_sun.mp3'),
+  plant5: new Audio('audio/07_plant-5.mp3'),
+  moon: new Audio('audio/07_moon.mp3'),
+
+};
+audioFiles.truck.load();
+audioFiles.birds.load();
+audioFiles.seeder.load();
+audioFiles.nextPage.load();
+audioFiles.prevPage.load();
+audioFiles.cloud.load();
+audioFiles.sun.load();
+audioFiles.plant5.load();
+audioFiles.moon.load();
+
+
+// ====== 初始化 turn.js ======
+$(document).ready(function() {
+  $('#book').turn({
+    width: 900,
+    height: 500,
+    autoCenter: true,
+    gradients: true,
+    acceleration: true,
+    display: 'single',
+    when: {
+      turned: function(e, page) {
+        document.getElementById('page-num').textContent = page + ' / 4';
+      }
+    }
+  });
+
+  $('#btn-prev').click(function() {
+    audioFiles.prevPage.currentTime = 0;
+    audioFiles.prevPage.play();
+    $('#book').turn('previous');
+  });
+  $('#btn-next').click(function() {
+    audioFiles.nextPage.currentTime = 0;
+    audioFiles.nextPage.play();
+    $('#book').turn('next');
+  });
+});
+
+// ====== 曳引機互動 ======
+let smokeTimer;
+
+function truckInteract() {
+  audioFiles.truck.currentTime = 0;
+  audioFiles.truck.play();
+
+  const truck = document.getElementById('truck');
+  const truckGroup = document.getElementById('truck-group');
+
+  // 曳引機原地震動
+  truck.style.animation = 'none';
+  void truck.offsetWidth;
+  truck.style.animation = 'truckDrive 3s linear';
+  setTimeout(() => truck.style.animation = '', 3000);
+
+  // 煙霧重置
+  for(let i = 1; i <= 5; i++) {
+    const smoke = document.getElementById('smoke-' + i);
+    smoke.style.animation = 'none';
+    smoke.style.opacity = '1';
+    void smoke.offsetWidth;
+  }
+
+  // 煙霧 4→1 依序 fade in fade out（兩遍）
+  const smokeDelays  = { 4: 0,    3: 250,  2: 500,  1: 750  };
+  const smokeDelays2 = { 4: 1200, 3: 1450, 2: 1700, 1: 1950 };
+
+  for(let i = 4; i >= 1; i--) {
+    const smoke = document.getElementById('smoke-' + i);
+    smoke.style.animation = 'none';
+    smoke.style.opacity = '0';
+    void smoke.offsetWidth;
+
+    // 第一遍
+    setTimeout(() => {
+      smoke.style.animation = 'smokeFadeInOut 0.9s ease forwards';
+    }, smokeDelays[i]);
+
+    // 第二遍
+    setTimeout(() => {
+      smoke.style.animation = 'none';
+      smoke.style.opacity = '0';
+      void smoke.offsetWidth;
+      smoke.style.animation = 'smokeFadeInOut 0.9s ease forwards';
+    }, smokeDelays2[i]);
+  }
+
+  // 煙霧 5 往右上飄（兩遍）
+  const smoke5 = document.getElementById('smoke-5');
+  smoke5.style.transition = 'none';
+  smoke5.style.animation = 'none';
+  smoke5.style.opacity = '0';
+  smoke5.style.transform = 'translate(0, 0)';
+  void smoke5.offsetWidth;
+  void smoke5.offsetWidth;
+  smoke5.style.animation = 'smokeRight 1.2s ease forwards';
+
+  setTimeout(() => {
+    smoke5.style.animation = 'none';
+    smoke5.style.opacity = '0';
+    void smoke5.offsetWidth;
+    smoke5.style.animation = 'smokeRight 1.2s ease forwards';
+  }, 1500);
+
+  // 煙霧淡回來
+  clearTimeout(smokeTimer);
+  smokeTimer = setTimeout(() => {
+    for(let i = 1; i <= 5; i++) {
+      const smoke = document.getElementById('smoke-' + i);
+      smoke.style.animation = 'none';
+      smoke.style.opacity = '0';
+      void smoke.offsetWidth;
+      smoke.style.transition = 'opacity 1.5s';
+      smoke.style.opacity = '1';
+      setTimeout(() => smoke.style.transition = '', 1500);
+    }
+  }, 3200);
+}
+
+// ====== 白鷺鷥互動 ======
+function birdInteract() {
+  audioFiles.birds.currentTime = 0;
+  audioFiles.birds.play();
+  document.querySelectorAll('.bird').forEach(bird => {
+    const delay = Math.random() * 400;
+    const distance = (bird.id === 'bird-9' || bird.id === 'bird-8')
+                     ? (Math.random() * 8 + 3)
+                     : (Math.random() * 15 + 5);
+    const forceLeft = bird.dataset.dir === 'left';
+    const direction = forceLeft ? -distance : (Math.random() > 0.5 ? distance : -distance);
+
+    setTimeout(() => {
+      bird.style.setProperty('--dx', direction + 'px');
+      bird.style.animation = 'none';
+      void bird.offsetWidth;
+      bird.style.animation = `birdHop ${0.6 + Math.random() * 0.4}s ease 4`;
+      setTimeout(() => bird.style.animation = '', 4000);
+    }, delay);
+  });
+}
+
+document.querySelectorAll('.bird').forEach(bird => {
+  bird.addEventListener('click', birdInteract);
+});
+
+// ====== 播種機互動 ======
+let seederAnimating = false;
+
+function seederInteract() {
+  if(seederAnimating) return;
+  seederAnimating = true;
+
+  audioFiles.seeder.currentTime = 0;
+  audioFiles.seeder.play();
+  const seeder = document.getElementById('seeder');
+  seeder.style.animation = 'none';
+  void seeder.offsetWidth;
+  seeder.style.animation = 'seederDrive 3s linear forwards';
+
+  // 3 秒後慢慢滑回原位
+setTimeout(() => {
+  // 先把目前位置固定住，再清掉動畫
+  seeder.style.transition = 'none';
+  seeder.style.transform = 'translateX(20px)';
+  seeder.style.animation = 'none';
+  void seeder.offsetWidth;
+
+  // 然後再慢慢滑回原位
+  seeder.style.transition = 'transform 2s ease';
+  seeder.style.transform = 'translateX(0)';
+  setTimeout(() => {
+    seeder.style.transition = '';
+    seederAnimating = false;
+  }, 2000);
+}, 3000);
+}
+
+// ====== 雲雨植物互動 ======
+function weatherInteract() {
+  audioFiles.cloud.currentTime = 0;
+  audioFiles.cloud.play();
+  const cloud = document.getElementById('cloud');
+  cloud.style.animation = 'none';
+  void cloud.offsetWidth;
+  cloud.style.animation = 'cloudFloat 4s ease';
+
+  const rain = document.getElementById('rain');
+  rain.style.animation = 'none';
+  rain.style.opacity = '0';
+  void rain.offsetWidth;
+  rain.style.animation = 'rainFadeIn 0.8s ease 0s, rainFadeIn 0.8s ease 1.2s, rainFadeIn 0.8s ease 2.4s forwards';
+
+  const plant = document.getElementById('plant-2');
+  plant.style.animation = 'none';
+  void plant.offsetWidth;
+  plant.style.animation = 'plantSway 1.2s ease 3';
+}
+
+// ====== 太陽互動 ======
+function sunInteract() {
+  audioFiles.sun.currentTime = 0;
+  audioFiles.sun.play();
+  const sun = document.getElementById('sun');
+  sun.style.animation = 'none';
+  void sun.offsetWidth;
+  sun.style.animation = 'sunRotate 4s ease';
+
+  const plant3 = document.getElementById('plant-3');
+  plant3.style.animation = 'none';
+  void plant3.offsetWidth;
+  plant3.style.animation = 'plantSway 1.2s ease 3';
+
+  const shineData = [
+    { id: 'shine-1', delay: 0 },
+    { id: 'shine-2', delay: 300 },
+    { id: 'shine-3', delay: 600 },
+  ];
+
+  shineData.forEach(({ id, delay }) => {
+    const el = document.getElementById(id);
+    el.style.animation = 'none';
+    el.style.opacity = '0';
+    void el.offsetWidth;
+    setTimeout(() => {
+      el.style.animation = 'shine 0.7s ease 0s, shine 0.7s ease 0.8s, shine 0.7s ease 1.6s, shine 0.7s ease 2.4s';
+      setTimeout(() => {
+        el.style.animation = '';
+        el.style.opacity = '1';
+      }, 3500);
+    }, delay);
+  });
+}
+
+// ====== 植物 5 互動 ======
+let plant5Animating = false;
+
+function plant5Interact() {
+  if(plant5Animating) return;
+  audioFiles.plant5.currentTime = 0;
+  audioFiles.plant5.play();
+  plant5Animating = true;
+
+  const flower = document.getElementById('plant-5-2');
+  flower.style.animation = 'none';
+  void flower.offsetWidth;
+  flower.style.animation = 'flowerSway 1s ease 2';
+
+  const leafL = document.getElementById('plant-5-4');
+  leafL.style.animation = 'none';
+  void leafL.offsetWidth;
+  leafL.style.animation = 'leafLeft 2s ease';
+
+  const leafR = document.getElementById('plant-5-5');
+  leafR.style.animation = 'none';
+  void leafR.offsetWidth;
+  leafR.style.animation = 'leafRight 2s ease';
+
+  setTimeout(() => {
+    flower.style.animation = '';
+    leafL.style.animation = '';
+    leafR.style.animation = '';
+    plant5Animating = false;
+  }, 2000);
+}
+
+// ====== 夜晚互動 ======
+let nightAnimating = false;
+
+function nightInteract() {
+  if(nightAnimating) return;
+  audioFiles.moon.currentTime = 0;
+  audioFiles.moon.play();
+  nightAnimating = true;
+
+  const leaf6L = document.getElementById('plant-6-2');
+  leaf6L.style.animation = 'none';
+  void leaf6L.offsetWidth;
+  leaf6L.style.animation = 'leafLeft 2s ease 2';
+
+  const leaf6R = document.getElementById('plant-6-3');
+  leaf6R.style.animation = 'none';
+  void leaf6R.offsetWidth;
+  leaf6R.style.animation = 'leafRight 2s ease 2';
+
+  const plant64 = document.getElementById('plant-6-4');
+  plant64.style.animation = 'none';
+  void plant64.offsetWidth;
+  plant64.style.animation = 'plantVibrate 0.3s ease 13';
+
+  const moon = document.getElementById('moon');
+  moon.style.animation = 'none';
+  void moon.offsetWidth;
+  moon.style.animation = 'moonFloat 4s ease';
+
+  const starDelays = [0, 400, 800, 200, 600, 1000, 300, 700];
+  for(let i = 1; i <= 8; i++) {
+    const star = document.getElementById('star-' + i);
+    star.style.animation = 'none';
+    void star.offsetWidth;
+    setTimeout(() => {
+      star.style.animation = 'starTwinkle 1.5s ease 2';
+    }, starDelays[i - 1]);
+  }
+
+  setTimeout(() => {
+    nightAnimating = false;
+  }, 3000);
+}
+</script>
+
+</body>
+</html>
