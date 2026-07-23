@@ -365,7 +365,7 @@
 
     <!-- 05 跨頁 -->
     <div class="page" style="position:relative;">
-      <img class="bg" src="images/05_Background.png" alt="">
+      <img class="bg" src="images/05_Background.jpg" alt="">
 
       <img src="images/05_bird-1.png" class="bird" id="bird-1"
            style="position:absolute; bottom:33%; left:13%; height:12%; cursor:pointer;">
@@ -398,7 +398,7 @@
 
     <!-- 07 跨頁 -->
     <div class="page" style="position:relative;">
-      <img class="bg" src="images/07_Background.png" alt="">
+      <img class="bg" src="images/07_Background.jpg" alt="">
 
       <!-- 植物 1 -->
       <img src="images/07_plant-1.png" id="plant-1"
@@ -441,24 +441,32 @@
 
       <!-- 植物 5 -->
       <img src="images/07_plant-5-1.png" id="plant-5-1"
-           style="position:absolute; bottom:0%; left:53.5%; height:83%;">
+           onclick="plant5Interact()"
+           style="position:absolute; bottom:0%; left:53.5%; height:83%; cursor:pointer;">
       <img src="images/07_plant-5-3.png" id="plant-5-3"
-           style="position:absolute; bottom:2%; left:54.2%; height:80%;">
+           onclick="plant5Interact()"
+           style="position:absolute; bottom:2%; left:54.2%; height:80%; cursor:pointer;">
       <img src="images/07_plant-5-2.png" id="plant-5-2"
-           style="position:absolute; bottom:4%; left:55.3%; height:76%;">
+           onclick="plant5Interact()"
+           style="position:absolute; bottom:4%; left:55.3%; height:76%; cursor:pointer;">
       <img src="images/07_plant-5-4.png" id="plant-5-4"
            onclick="plant5Interact()"
            style="position:absolute; bottom:44%; left:57%; height:26%; cursor:pointer; transform-origin: 60% 50%;">
       <img src="images/07_plant-5-5.png" id="plant-5-5"
            onclick="plant5Interact()"
            style="position:absolute; bottom:51%; left:75%; height:26%; cursor:pointer; transform-origin: 50% 60%;">
+        <div onclick="plant5Interact()"
+        style="position:absolute; bottom:0%; left:53.5%; height:83%; width:30%; cursor:pointer; z-index:10;">
+        </div>
+
 
       <!-- 植物 6 + 月亮 + 星星 -->
       <img src="images/07_moon.png" id="moon"
            onclick="nightInteract()"
            style="position:absolute; bottom:43%; left:92%; height:15%; cursor:pointer;">
       <img src="images/07_plant-6-1.png" id="plant-6-1"
-           style="position:absolute; bottom:0; left:71%; height:100%;">
+           onclick="nightInteract()"
+           style="position:absolute; bottom:0; left:71%; height:100%; cursor:pointer;">
       <img src="images/07_plant-6-2.png" id="plant-6-2"
            onclick="nightInteract()"
            style="position:absolute; bottom:69%; left:75%; height:26%; cursor:pointer; transform-origin: 60% 50%;">
