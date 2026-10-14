@@ -411,6 +411,177 @@
     100% { opacity: 0.2; transform: scale(0.9); }
   }
 
+/* 毛豆驚嚇顫抖 */
+@keyframes maodouShock {
+  0%   { transform: translateX(0); }
+  5%   { transform: translateX(-4px); }
+  10%  { transform: translateX(4px); }
+  15%  { transform: translateX(-4px); }
+  20%  { transform: translateX(4px); }
+  25%  { transform: translateX(-4px); }
+  30%  { transform: translateX(4px); }
+  35%  { transform: translateX(-4px); }
+  40%  { transform: translateX(4px); }
+  45%  { transform: translateX(-4px); }
+  50%  { transform: translateX(4px); }
+  55%  { transform: translateX(-4px); }
+  60%  { transform: translateX(4px); }
+  65%  { transform: translateX(-4px); }
+  70%  { transform: translateX(4px); }
+  75%  { transform: translateX(-4px); }
+  80%  { transform: translateX(4px); }
+  85%  { transform: translateX(-3px); }
+  90%  { transform: translateX(3px); }
+  95%  { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes plantShock {
+  0%   { transform: translateX(0)    translateY(0); }
+  15%  { transform: translateX(-3px) translateY(-2px); }
+  30%  { transform: translateX(3px)  translateY(2px); }
+  45%  { transform: translateX(-3px) translateY(-2px); }
+  60%  { transform: translateX(3px)  translateY(2px); }
+  75%  { transform: translateX(-3px) translateY(-2px); }
+  90%  { transform: translateX(3px)  translateY(2px); }
+  100% { transform: translateX(0)    translateY(0); }
+}
+
+
+/* 帽子往左上飛並旋轉 */
+@keyframes hatFly {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-30px, -40px) rotate(-15deg); }
+}
+
+@keyframes hatShake {
+  0%   { transform: translate(-30px, -40px) rotate(-15deg); }
+  10%  { transform: translate(-34px, -40px) rotate(-15deg); }
+  20%  { transform: translate(-26px, -40px) rotate(-15deg); }
+  30%  { transform: translate(-34px, -40px) rotate(-15deg); }
+  40%  { transform: translate(-26px, -40px) rotate(-15deg); }
+  50%  { transform: translate(-34px, -40px) rotate(-15deg); }
+  60%  { transform: translate(-26px, -40px) rotate(-15deg); }
+  70%  { transform: translate(-34px, -40px) rotate(-15deg); }
+  80%  { transform: translate(-26px, -40px) rotate(-15deg); }
+  90%  { transform: translate(-32px, -40px) rotate(-15deg); }
+  100% { transform: translate(-30px, -40px) rotate(-15deg); }
+}
+
+@keyframes dotLeft {
+  0%   { transform: translate(0, 0); }
+  35%  { transform: translate(-8px, 8px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes dotRight {
+  0%   { transform: translate(0, 0); }
+  35%  { transform: translate(8px, -8px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes dotLeftGo {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-8px, 8px); }
+}
+@keyframes dotRightGo {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(8px, -8px); }
+}
+@keyframes dotShakeLeft {
+  0%   { transform: translate(-8px, 8px); }
+  10%  { transform: translate(-12px, 8px); }
+  20%  { transform: translate(-4px, 8px); }
+  30%  { transform: translate(-12px, 8px); }
+  40%  { transform: translate(-4px, 8px); }
+  50%  { transform: translate(-12px, 8px); }
+  60%  { transform: translate(-4px, 8px); }
+  70%  { transform: translate(-12px, 8px); }
+  80%  { transform: translate(-4px, 8px); }
+  90%  { transform: translate(-10px, 8px); }
+  100% { transform: translate(-8px, 8px); }
+}
+@keyframes dotShakeRight {
+  0%   { transform: translate(8px, -8px); }
+  10%  { transform: translate(12px, -8px); }
+  20%  { transform: translate(4px, -8px); }
+  30%  { transform: translate(12px, -8px); }
+  40%  { transform: translate(4px, -8px); }
+  50%  { transform: translate(12px, -8px); }
+  60%  { transform: translate(4px, -8px); }
+  70%  { transform: translate(12px, -8px); }
+  80%  { transform: translate(4px, -8px); }
+  90%  { transform: translate(10px, -8px); }
+  100% { transform: translate(8px, -8px); }
+}
+
+@keyframes maodouSwayOnce {
+  0%   { transform: rotate(0deg); }
+  40%  { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* 聲音線條變大 */
+@keyframes redGrow {
+  0%   { transform: scale(1); }
+  5%   { transform: scale(1.15); }
+  10%  { transform: scale(1.05); }
+  15%  { transform: scale(1.15); }
+  20%  { transform: scale(1.05); }
+  25%  { transform: scale(1.15); }
+  30%  { transform: scale(1.05); }
+  35%  { transform: scale(1.15); }
+  40%  { transform: scale(1.05); }
+  45%  { transform: scale(1.15); }
+  50%  { transform: scale(1.05); }
+  55%  { transform: scale(1.15); }
+  60%  { transform: scale(1.05); }
+  65%  { transform: scale(1.15); }
+  70%  { transform: scale(1.05); }
+  75%  { transform: scale(1.15); }
+  80%  { transform: scale(1.05); }
+  85%  { transform: scale(1.12); }
+  90%  { transform: scale(1.08); }
+  95%  { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* 小蟲 */
+@keyframes bugJump {
+  0%   { transform: translateX(0); }
+  3%   { transform: translateX(-4px); }
+  6%   { transform: translateX(4px); }
+  9%   { transform: translateX(-4px); }
+  12%  { transform: translateX(4px); }
+  15%  { transform: translateX(-4px); }
+  18%  { transform: translateX(4px); }
+  21%  { transform: translateX(-4px); }
+  24%  { transform: translateX(4px); }
+  27%  { transform: translateX(-4px); }
+  30%  { transform: translateX(4px); }
+  33%  { transform: translateX(-4px); }
+  36%  { transform: translateX(4px); }
+  39%  { transform: translateX(-4px); }
+  42%  { transform: translateX(4px); }
+  45%  { transform: translateX(-4px); }
+  48%  { transform: translateX(4px); }
+  51%  { transform: translateX(-4px); }
+  54%  { transform: translateX(4px); }
+  57%  { transform: translateX(-4px); }
+  60%  { transform: translateX(4px); }
+  63%  { transform: translateX(-4px); }
+  66%  { transform: translateX(4px); }
+  69%  { transform: translateX(-4px); }
+  72%  { transform: translateX(4px); }
+  75%  { transform: translateX(-3px); }
+  80%  { transform: translateX(3px); }
+  85%  { transform: translateX(-2px); }
+  90%  { transform: translateX(2px); }
+  95%  { transform: translateX(-1px); }
+  100% { transform: translateX(0); }
+}
+
+
   /* 手機版：自動縮放書本 */
   @media (max-width: 960px) {
     body { padding: 10px; }
@@ -422,7 +593,9 @@
   }
 
   /* 確保所有互動物件預設不播放動畫 */
-#car, #word-09, #maodou-1, #maodou-2, #maodou-3-1, #maodou-3-2, #maodou-4, #maodou-5, #maodou-6, #maodou-7, #maodou-8-1, #maodou-8-2, #maodou-10, #maodou-11-1, #maodou-11-2, #maodou-12, #maodou-13, #maodou-14, #maodou-15,#truck, #smoke-1, #smoke-2, #smoke-3, #smoke-4, #smoke-5,
+#car, #word-09, #maodou-1, #maodou-2, #maodou-3-1, #maodou-3-2, #maodou-4, #maodou-5, #maodou-6, #maodou-7, #maodou-8-1, #maodou-8-2, #maodou-10, #maodou-11-1, #maodou-11-2, #maodou-12, #maodou-13, #maodou-14, #maodou-15,
+#maodou11-1-1, #maodou11-1-2, #maodou11-1-3, #maodou11-1-4, #maodou11-2, #maodou11-2, #plant11-1, #red, #bug, 
+#truck, #smoke-1, #smoke-2, #smoke-3, #smoke-4, #smoke-5,
 #seeder,
 #bird-1, #bird-2, #bird-3, #bird-4, #bird-5, #bird-6,
 #bird-7, #bird-8, #bird-9, #bird-10, #bird-11,
@@ -664,8 +837,8 @@
 
     <!-- 背景圖層（1在最底，4在最前）-->
       <img class="bg" src="images/09_background-1.jpg" alt="">
-      <img src="images/09_background-2.jpg"
-        style="position:absolute; bottom:46%; left:0; width:100%;">
+      <img src="images/09_background-2.png"
+        style="position:absolute; bottom:0%; left:0%; width:100%;">
 
        <!-- car 和 word 在背景2和4之間 -->
        <img src="images/09_car.png" id="car"
@@ -741,8 +914,54 @@
 
 
 </div>
+
+<!-- 11 跨頁 -->
+<div class="page" style="position:relative;">
+  <img class="bg" src="images/11_background.jpg" alt="">
+
+  <img src="images/11_plant-1.png" id="plant11-1"
+       onclick="maodou11Shock()"
+       style="position:absolute; bottom:-1%; left:-1%; height:35%; cursor:pointer;">
+  <img src="images/11_plant-2.png" id="plant11-2"
+       style="position:absolute; bottom:7%; left:0%; height:95%;">
+  <img src="images/11_bug.png" id="bug"
+       onclick="bugInteract()"
+       style="position:absolute; bottom:51%; left:56%; height:9%; cursor:pointer;">
+  <img src="images/11_maodou-2.png" id="maodou11-2"
+       onclick="maodou11Sway()"
+       style="position:absolute; bottom:-2%; left:7%; height:75%; cursor:pointer; transform-origin: 75% 100%;">
+  <img src="images/11_maodou-1-1.png" id="maodou11-1-1"
+       style="position:absolute; bottom:0%; left:7%; height:54%; pointer-events:none">
+      <div onclick="maodou11Shock()"
+       style="position:absolute; bottom:0%; left:7%; height:52%; width:28%; cursor:pointer; z-index:10;">
+      </div>
+  <img src="images/11_maodou-1-2.png" id="maodou11-1-2"
+       onclick="maodou11Shock()"
+       style="position:absolute; bottom:48%; left:2%; height:31%; cursor:pointer">
+  <img src="images/11_maodou-1-3.png" id="maodou11-1-3"
+       onclick="maodou11Shock()"
+       style="position:absolute; bottom:1%; left:4%; height:43%; cursor:pointer;">
+  <img src="images/11_maodou-1-4.png" id="maodou11-1-4"
+       onclick="maodou11Shock()"
+       style="position:absolute; bottom:10%; left:24%; height:30%; cursor:pointer;">
+  <img src="images/11_red.png" id="red"
+       style="position:absolute; bottom:28%; left:18%; height:72.5%; pointer-events:none;">
+    <<div onclick="bugInteract()"
+     style="position:absolute; bottom:50%; left:45%; height:50%; width:55%; cursor:pointer; z-index:10;">
+</div>
+
+<div class="click-hint" id="hint-11" style="bottom:13%; left:17%;">
+  <img src="images/pointing_finger.png" style="width:35px; height:auto;">
+</div>
+
+</div>
+
   </div>
 </div>
+
+
+
+
 
 <div id="page-num">1 / 4</div>
 
@@ -769,7 +988,12 @@ const audioFiles = {
   maodouD: new Audio('audio/09_maodou-d.mp3'),
   maodouE: new Audio('audio/09_maodou-e.mp3'),
   car09: new Audio('audio/09_car.mp3'),
+  shock11: new Audio('audio/11_shock.mp3'),
+  sway11: new Audio('audio/11_sway.mp3'),
+  bug11: new Audio('audio/11_bug.mp3'),
 };
+
+
 audioFiles.truck.load();
 audioFiles.birds.load();
 audioFiles.seeder.load();
@@ -785,6 +1009,10 @@ audioFiles.maodouC.load();
 audioFiles.maodouD.load();
 audioFiles.maodouE.load();
 audioFiles.car09.load();
+audioFiles.shock11.load();
+audioFiles.sway11.load();
+audioFiles.bug11.load();
+
 
 // ====== 初始化 turn.js ======
 $(document).ready(function() {
@@ -797,15 +1025,16 @@ $(document).ready(function() {
     display: 'single',
    when: {
   turned: function(e, page) {
-    document.getElementById('page-num').textContent = page + ' / 5';
+    document.getElementById('page-num').textContent = page + ' / 6';
 
     // 顯示點擊提示
-    const hints = {
-    2: 'hint-03',
-    3: 'hint-05',
-    4: 'hint-07',
-    5: 'hint-09',
-    };
+   const hints = {
+     2: 'hint-03',
+     3: 'hint-05',
+     4: 'hint-07',
+     5: 'hint-09',
+     6: 'hint-11',
+   };
 
     Object.keys(hints).forEach(p => {
     const hint = document.getElementById(hints[p]);
@@ -826,7 +1055,10 @@ if(hintId) {
 
     // 翻頁時重置所有動畫
     const resetIds = [
-     'car', 'word-09', 'maodou-1', 'maodou-2', 'maodou-3-1', 'maodou-3-2', 'maodou-4', 'maodou-5', 'maodou-6', 'maodou-7', 'maodou-8-1', 'maodou-8-2', 'maodou-10', 'maodou-11-1', 'maodou-11-2', 'maodou-12', 'maodou-13', 'maodou-14', 'maodou-15', 'truck', 'smoke-1', 'smoke-2', 'smoke-3', 'smoke-4', 'smoke-5',
+     'car', 'word-09', 'maodou-1', 'maodou-2', 'maodou-3-1', 'maodou-3-2', 
+     'maodou-4', 'maodou-5', 'maodou-6', 'maodou-7', 'maodou-8-1', 'maodou-8-2', 'maodou-10', 'maodou-11-1', 'maodou-11-2', 'maodou-12', 'maodou-13', 'maodou-14', 'maodou-15', 
+     'maodou11-1-1', 'maodou11-1-2', 'maodou11-1-3', 'maodou11-1-4', 'maodou11-2', 'plant11-1', 'red', 'bug',
+     'truck', 'smoke-1', 'smoke-2', 'smoke-3', 'smoke-4', 'smoke-5',
       'seeder',
       'bird-1', 'bird-2', 'bird-3', 'bird-4', 'bird-5', 'bird-6',
       'bird-7', 'bird-8', 'bird-9', 'bird-10', 'bird-11',
@@ -883,6 +1115,9 @@ if(hintId) {
     maodouCAnimating = false;
     maodouDAnimating = false;
     maodouEAnimating = false;
+    maodou11ShockAnimating = false;
+    maodou11SwayAnimating = false;
+    bugAnimating = false;
   }
 }
   });
@@ -1378,6 +1613,151 @@ function carInteract() {
     car.style.animation = '';
     word09.style.animation = '';
     carAnimating = false;
+  }, 3000);
+}
+
+// ====== 11 毛豆驚嚇互動 ======
+let maodou11ShockAnimating = false;
+
+function maodou11Shock() {
+  if(maodou11ShockAnimating) return;
+  audioFiles.shock11.currentTime = 0;
+  audioFiles.shock11.play();
+  maodou11ShockAnimating = true;
+
+  // 毛豆顫抖
+  const body = document.getElementById('maodou11-1-1');
+  body.style.animation = 'none';
+  void body.offsetWidth;
+  body.style.animation = 'maodouShock 0.5s linear 3';
+
+  // 植物震動
+  const plant1 = document.getElementById('plant11-1');
+  plant1.style.animation = 'none';
+  void plant1.offsetWidth;
+  plant1.style.animation = 'plantShock 0.5s linear 3';
+  
+  // 帽子往左上飛
+  const hat = document.getElementById('maodou11-1-2');
+  hat.style.animation = 'none';
+  void hat.offsetWidth;
+  hat.style.animation = 'hatFly 0.2s ease forwards';
+
+  // 左右點點震動
+  const dot1 = document.getElementById('maodou11-1-3');
+  dot1.style.animation = 'none';
+  void dot1.offsetWidth;
+  dot1.style.animation = 'dotLeftGo 0.2s ease forwards';
+
+  const dot2 = document.getElementById('maodou11-1-4');
+  dot2.style.animation = 'none';
+  void dot2.offsetWidth;
+  dot2.style.animation = 'dotRightGo 0.2s ease forwards';
+
+  // 點點到位後震動再回來
+setTimeout(() => {
+  dot1.style.animation = 'none';
+  dot1.style.transform = 'translate(-8px, 8px)';
+  void dot1.offsetWidth;
+  dot1.style.animation = 'dotShakeLeft 0.5s linear 3';
+
+  dot2.style.animation = 'none';
+  dot2.style.transform = 'translate(8px, -8px)';
+  void dot2.offsetWidth;
+  dot2.style.animation = 'dotShakeRight 0.5s linear 3';
+
+  setTimeout(() => {
+    dot1.style.animation = 'none';
+    dot1.style.transform = 'translate(-8px, 8px)';
+    void dot1.offsetWidth;
+    dot1.style.transition = 'transform 0.3s ease';
+    dot1.style.transform = 'translate(0, 0)';
+
+    dot2.style.animation = 'none';
+    dot2.style.transform = 'translate(8px, -8px)';
+    void dot2.offsetWidth;
+    dot2.style.transition = 'transform 0.3s ease';
+    dot2.style.transform = 'translate(0, 0)';
+  }, 1500);
+}, 200);
+
+
+
+// 0.6 秒後帽子開始回來
+setTimeout(() => {
+  // 帽子原地震動
+  hat.style.animation = 'none';
+  void hat.offsetWidth;
+  hat.style.animation = 'hatShake 0.4s linear 4';
+
+  // 震動完再回來
+  setTimeout(() => {
+    hat.style.transition = 'none';
+    hat.style.transform = 'translate(-30px, -40px) rotate(-15deg)';
+    hat.style.animation = 'none';
+    void hat.offsetWidth;
+    hat.style.transition = 'transform 0.3s ease';
+    hat.style.transform = 'translate(0, 0) rotate(0deg)';
+  }, 1500);
+}, 200);
+
+setTimeout(() => {
+  hat.style.transition = '';
+  dot1.style.animation = '';
+  dot2.style.animation = '';
+  plant1.style.animation = '';
+  body.style.animation = '';
+  maodou11ShockAnimating = false;
+  dot1.style.transition = '';
+  dot1.style.transform = '';
+  dot2.style.transition = '';
+  dot2.style.transform = '';
+}, 3000);
+}
+
+// ====== 11 毛豆2搖擺互動 ======
+let maodou11SwayAnimating = false;
+
+function maodou11Sway() {
+  if(maodou11SwayAnimating) return;
+  audioFiles.sway11.currentTime = 0;
+  audioFiles.sway11.play();
+  maodou11SwayAnimating = true;
+
+  const el = document.getElementById('maodou11-2');
+  el.style.animation = 'none';
+  void el.offsetWidth;
+  el.style.animation = 'maodouSwayOnce 1.5s ease';
+
+  setTimeout(() => {
+    el.style.animation = '';
+    maodou11SwayAnimating = false;
+  }, 1500);
+}
+
+// ====== 11 蟲蟲互動 ======
+let bugAnimating = false;
+
+function bugInteract() {
+  if(bugAnimating) return;
+  audioFiles.bug11.currentTime = 0;
+  audioFiles.bug11.play();
+  bugAnimating = true;
+
+  const red = document.getElementById('red');
+  red.style.animation = 'none';
+  void red.offsetWidth;
+  red.style.animation = 'redGrow 3s linear';
+
+  const bug = document.getElementById('bug');
+  bug.style.animation = 'none';
+  void bug.offsetWidth;
+  bug.style.animation = 'bugJump 3s ease';
+
+  setTimeout(() => {
+    red.style.animation = '';
+    bug.style.animation = '';
+    bugAnimating = false;
   }, 3000);
 }
 
