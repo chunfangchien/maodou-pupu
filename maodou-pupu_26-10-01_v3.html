@@ -581,6 +581,149 @@
   100% { transform: translateX(0); }
 }
 
+/* 第13頁 毛豆1-3動態 */
+@keyframes maodouFadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* 第13頁 毛豆4-5動態 */
+@keyframes leafSway {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(15deg); }
+  50%  { transform: rotate(0deg); }
+  75%  { transform: rotate(15deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* 第15頁 運輸帶 */
+@keyframes conveyorVibrate {
+  0%   { transform: translateY(0); }
+  8%   { transform: translateY(-1px); }
+  16%  { transform: translateY(1px); }
+  24%  { transform: translateY(-1px); }
+  30%  { transform: translateY(1px); }
+  36%  { transform: translateY(-2px); }
+  42%  { transform: translateY(2px); }
+  50%  { transform: translateY(-1px); }
+  58%  { transform: translateY(1px); }
+  64%  { transform: translateY(-1px); }
+  70%  { transform: translateY(1px); }
+  76%  { transform: translateY(-2px); }
+  82%  { transform: translateY(2px); }
+  90%  { transform: translateY(-1px); }
+  96%  { transform: translateY(1px); }
+  100% { transform: translateY(0); }
+}
+
+/* 第15頁 運輸帶上的毛豆 */
+@keyframes maodouVibrate {
+  0%   { transform: translateY(0); }
+  8%   { transform: translateY(-0.5px); }
+  16%  { transform: translateY(0.5px); }
+  24%  { transform: translateY(-0.5px); }
+  30%  { transform: translateY(0.5px); }
+  36%  { transform: translateY(-1.5px); }
+  42%  { transform: translateY(1px); }
+  50%  { transform: translateY(-0.5px); }
+  58%  { transform: translateY(0.5px); }
+  64%  { transform: translateY(-0.5px); }
+  70%  { transform: translateY(0.5px); }
+  76%  { transform: translateY(-1.5px); }
+  82%  { transform: translateY(1px); }
+  90%  { transform: translateY(-0.5px); }
+  96%  { transform: translateY(0.5px); }
+  100% { transform: translateY(0); }
+}
+
+/* 第15頁 噴管 */
+@keyframes nozzleSpray {
+  0%   { transform: scaleY(1); }
+  15%  { transform: scaleY(0.85); }
+  30%  { transform: scaleY(1.2); }
+  50%  { transform: scaleY(0.9); }
+  65%  { transform: scaleY(1.15); }
+  80%  { transform: scaleY(0.95); }
+  100% { transform: scaleY(1); }
+}
+
+/* 第15頁 噴水 */
+@keyframes waterSpray {
+  0%   { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 第15頁 噴毛豆 */
+@keyframes fadeFromUpperRight {
+  0%   { opacity: 0; transform: translate(15px, -15px); }
+  100% { opacity: 1; transform: translate(0, 0); }
+}
+@keyframes fadeFromAbove {
+  0%   { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeFromUpperLeft {
+  0%   { opacity: 0; transform: translate(-15px, -15px); }
+  100% { opacity: 1; transform: translate(0, 0); }
+}
+
+/* 第17頁 冷凍噴霧方向 */
+@keyframes fadeFromLowerLeft {
+  0%   { opacity: 0; transform: translate(-15px, 15px); }
+  100% { opacity: 1; transform: translate(0, 0); }
+}
+@keyframes fadeFrom5Clock {
+  0%   { opacity: 0; transform: translate(12px, 15px); }
+  100% { opacity: 1; transform: translate(0, 0); }
+}
+@keyframes fadeInPlace {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+/* 第17頁 毛豆顫抖 */
+@keyframes maodou17Shiver {
+  0%   { transform: translateX(0); }
+  10%  { transform: translateX(-3px); }
+  20%  { transform: translateX(3px); }
+  30%  { transform: translateX(-3px); }
+  40%  { transform: translateX(3px); }
+  50%  { transform: translateX(-2px); }
+  60%  { transform: translateX(2px); }
+  70%  { transform: translateX(-2px); }
+  80%  { transform: translateX(2px); }
+  90%  { transform: translateX(-1px); }
+  100% { transform: translateX(0); }
+}
+
+/* 第17頁 溫度計微顫 */
+@keyframes thermometerShiver {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-2px, -2px); }
+  20%  { transform: translate(2px, 2px); }
+  30%  { transform: translate(-2px, -2px); }
+  40%  { transform: translate(2px, 2px); }
+  50%  { transform: translate(-2px, -1px); }
+  60%  { transform: translate(2px, 1px); }
+  70%  { transform: translate(-2px, -1px); }
+  80%  { transform: translate(2px, 1px); }
+  90%  { transform: translate(-1px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+/* 第17頁 冰晶閃爍 */
+@keyframes iceTwinkle1 {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+@keyframes iceTwinkle2 {
+  0%   { opacity: 0.4; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
 
   /* 手機版：自動縮放書本 */
   @media (max-width: 960px) {
@@ -594,7 +737,24 @@
 
   /* 確保所有互動物件預設不播放動畫 */
 #car, #word-09, #maodou-1, #maodou-2, #maodou-3-1, #maodou-3-2, #maodou-4, #maodou-5, #maodou-6, #maodou-7, #maodou-8-1, #maodou-8-2, #maodou-10, #maodou-11-1, #maodou-11-2, #maodou-12, #maodou-13, #maodou-14, #maodou-15,
-#maodou11-1-1, #maodou11-1-2, #maodou11-1-3, #maodou11-1-4, #maodou11-2, #maodou11-2, #plant11-1, #red, #bug, 
+#maodou11-1-1, #maodou11-1-2, #maodou11-1-3, #maodou11-1-4, #maodou11-2, #maodou11-2, #plant11-1, #red, #bug, #car-13, 
+#machine15-1, #machine15-2,
+#maodou15-1, #maodou15-2, #maodou15-3, #maodou15-4, #maodou15-5,
+#maodou15-6, #maodou15-7, #maodou15-8, #maodou15-9, #maodou15-10,
+#maodou15-11, #maodou15-12, #maodou15-13,
+#water-15, #word15-1, #word15-2, #word15-3,
+#machine-17, #maodou-17,
+#cold17-1, #cold17-2, #cold17-3, #cold17-4, #cold17-5,
+#dots-17, #ice17-1, #ice17-2, #thermometer-17,
+#people18-1, #people18-2, #basket18-1, #basket18-2, #maodou18-41,
+#maodou18-1, #maodou18-2, #maodou18-3, #maodou18-4, #maodou18-5,
+#maodou18-6, #maodou18-7, #maodou18-8, #maodou18-9, #maodou18-10,
+#maodou18-11, #maodou18-12, #maodou18-13, #maodou18-14, #maodou18-15,
+#maodou18-16, #maodou18-17, #maodou18-18, #maodou18-19, #maodou18-20,
+#maodou18-21, #maodou18-22, #maodou18-23, #maodou18-24, #maodou18-25,
+#maodou18-26, #maodou18-27, #maodou18-28, #maodou18-29, #maodou18-30,
+#maodou18-31, #maodou18-32, #maodou18-33, #maodou18-34, #maodou18-35,
+#maodou18-36, #maodou18-37, #maodou18-38, #maodou18-39, #maodou18-40,
 #truck, #smoke-1, #smoke-2, #smoke-3, #smoke-4, #smoke-5,
 #seeder,
 #bird-1, #bird-2, #bird-3, #bird-4, #bird-5, #bird-6,
@@ -620,6 +780,19 @@
   40%  { opacity: 1; transform: translate(8px, 8px); }
   100% { opacity: 1; transform: translate(15px, 15px); }
 }
+
+@keyframes maodouPop {
+  0%   { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(0deg); }
+  30%  { opacity: 1; transform: translate(0, 0) rotate(var(--r1)); }
+  45%  { transform: rotate(var(--r2)); }
+  60%  { transform: rotate(var(--r1)); }
+  72%  { transform: rotate(var(--r2)); }
+  82%  { transform: rotate(var(--r1)); }
+  90%  { transform: rotate(var(--r2)); }
+  100% { opacity: 1; transform: translate(0, 0) rotate(0deg); }
+}
+
+
 
 /* 點擊提示手指 */
 .click-hint {
@@ -923,10 +1096,10 @@
        onclick="maodou11Shock()"
        style="position:absolute; bottom:-1%; left:-1%; height:35%; cursor:pointer;">
   <img src="images/11_plant-2.png" id="plant11-2"
-       style="position:absolute; bottom:7%; left:0%; height:95%;">
+       style="position:absolute; bottom:0%; left:-1%; height:100%;">
   <img src="images/11_bug.png" id="bug"
        onclick="bugInteract()"
-       style="position:absolute; bottom:51%; left:56%; height:9%; cursor:pointer;">
+       style="position:absolute; bottom:46%; left:56%; height:9%; cursor:pointer;">
   <img src="images/11_maodou-2.png" id="maodou11-2"
        onclick="maodou11Sway()"
        style="position:absolute; bottom:-2%; left:7%; height:75%; cursor:pointer; transform-origin: 75% 100%;">
@@ -946,15 +1119,183 @@
        style="position:absolute; bottom:10%; left:24%; height:30%; cursor:pointer;">
   <img src="images/11_red.png" id="red"
        style="position:absolute; bottom:28%; left:18%; height:72.5%; pointer-events:none;">
-    <<div onclick="bugInteract()"
+  <div onclick="bugInteract()"
      style="position:absolute; bottom:50%; left:45%; height:50%; width:55%; cursor:pointer; z-index:10;">
+  </div>
+
+  <div class="click-hint" id="hint-11" style="bottom:13%; left:17%;">
+    <img src="images/pointing_finger.png" style="width:35px; height:auto;">
+  </div>
+
+</div> 
+
+<!-- 13 跨頁 -->
+<div class="page" style="position:relative;">
+  <img class="bg" src="images/13_background.jpg" alt="">
+
+  <img src="images/13_car.png" id="car-13"
+       onclick="truck13Interact()"
+       style="position:absolute; bottom:13%; left:16%; height:12%; cursor:pointer;">
+  <img src="images/13_maodou-1.png" id="maodou13-1"
+       style="position:absolute; bottom:24%; left:19%; height:7%; opacity:1;">
+  <img src="images/13_maodou-2.png" id="maodou13-2"
+       style="position:absolute; bottom:29%; left:19%; height:2%; opacity:1;">
+  <img src="images/13_maodou-3.png" id="maodou13-3"
+       style="position:absolute; bottom:26%; left:17%; height:2.3%; opacity:1;">
+  <img src="images/13_maodou-4.png" id="maodou13-4"
+       style="position:absolute; bottom:17%; left:33.5%; height:4%; opacity:1; transform-origin: bottom center;">
+  <img src="images/13_maodou-5.png" id="maodou13-5"
+       style="position:absolute; bottom:16.5%; left:37.5%; height:6%; opacity:1; transform-origin: bottom center;">
+  <img src="images/13_mountain.png" id="mountain-13"
+       style="position:absolute; bottom:0%; left:0%; width:100%; pointer-events:none;">
+
+  <div class="click-hint" id="hint-13" style="bottom:9%; left:18%;">
+    <img src="images/pointing_finger.png" style="width:35px; height:auto;">
+  </div>
 </div>
 
-<div class="click-hint" id="hint-11" style="bottom:13%; left:17%;">
-  <img src="images/pointing_finger.png" style="width:35px; height:auto;">
+<!-- 15 跨頁 -->
+<div class="page" style="position:relative;">
+  <img class="bg" src="images/15_background.jpg" alt="">
+
+  <img src="images/15_machine-1.png" id="machine15-1"
+       onclick="machine15Interact()"
+       style="position:absolute; bottom:20%; left:0%; height:80%; cursor:pointer;">
+  <img src="images/15_machine-2.png" id="machine15-2"
+       onclick="machine152Interact()"
+       style="position:absolute; bottom:70%; left:58%; height:30%; cursor:pointer; transform-origin: top center;">
+
+  <img src="images/15_maodou-1.png"  id="maodou15-1"  style="position:absolute; bottom:39%; left:45%;  height:24%; opacity:0;">
+  <img src="images/15_maodou-2.png"  id="maodou15-2"  style="position:absolute; bottom:40%; left:67%; height:25%; opacity:0;">
+  <img src="images/15_maodou-3.png"  id="maodou15-3"  style="position:absolute; bottom:57%; left:86%; height:12%; opacity:0;">
+  <img src="images/15_maodou-4.png"  id="maodou15-4"  style="position:absolute; bottom:7%; left:34%; height:16%; opacity:0;">
+  <img src="images/15_maodou-5.png"  id="maodou15-5"  style="position:absolute; bottom:15%; left:53%; height:17%; opacity:0;">
+  <img src="images/15_maodou-6.png"  id="maodou15-6"  style="position:absolute; bottom:10%; left:74%; height:16%; opacity:0;">
+  <img src="images/15_maodou-7.png"  id="maodou15-7"  style="position:absolute; bottom:25%; left:91%; height:19%; opacity:0;">
+  <img src="images/15_maodou-8.png"  id="maodou15-8"  style="position:absolute; bottom:33.5%; left:1%; height:6.5%; cursor:pointer;">
+  <img src="images/15_maodou-9.png"  id="maodou15-9"  style="position:absolute; bottom:34%; left:11%;  height:7%; cursor:pointer;">
+  <img src="images/15_maodou-10.png" id="maodou15-10" style="position:absolute; bottom:40%; left:16%; height:15%; cursor:pointer;">
+  <img src="images/15_maodou-11.png" id="maodou15-11" style="position:absolute; bottom:55%; left:21.5%; height:16%; cursor:pointer;">
+  <img src="images/15_maodou-12.png" id="maodou15-12" style="position:absolute; bottom:73%; left:24.5%; height:9%; cursor:pointer;">
+  <img src="images/15_maodou-13.png" id="maodou15-13" style="position:absolute; bottom:85%; left:30.5%; height:12%; cursor:pointer;">
+
+  <img src="images/15_water.png" id="water-15"
+       style="position:absolute; bottom:1%; left:27%; height:74%; opacity:0; transform-origin: top center;">
+
+  <img src="images/15_word-1.png" id="word15-1"
+       style="position:absolute; top:23%; left:37%; height:16%; opacity:0;">
+  <img src="images/15_word-2.png" id="word15-2"
+       style="position:absolute; top:13%; left:78%; height:17%; opacity:0;">
+  <img src="images/15_word-3.png" id="word15-3"
+       style="position:absolute; top:66%; left:64%; height:13%; opacity:0;">
 </div>
 
+<!-- 17-18 頁 -->
+<div class="page" style="position:relative;">
+ 
+  <img src="images/18_background.jpg" id="bg-18"
+       style="position:absolute; top:0%; left:50%; width:50%; height:100%;">
+
+  <img src="images/18_machine.png" id="machine-18"
+       style="position:absolute; bottom:0%; left:50%; width:55%;">
+
+  <img class="bg" src="images/17_background.jpg" alt="" style="width:50%; left:0%; height:100%;">
+  
+  <img src="images/17_machine.png" id="machine-17"
+       style="position:absolute; bottom:-2%; left:-6%; width:57%;">
+
+  <img src="images/17_maodou.png" id="maodou-17"
+       onclick="page17Interact()"
+       style="position:absolute; bottom:31%; left:9%; height:53%; cursor:pointer;">
+
+  <img src="images/17_cold-1.png" id="cold17-1"
+       onclick="page17Interact()"
+       style="position:absolute; bottom:67%; left:0%; height:33%; opacity:0; cursor:pointer;">
+  <img src="images/17_cold-2.png" id="cold17-2"
+       onclick="page17Interact()"
+       style="position:absolute; bottom:13%; left:0%; height:36%; opacity:0; cursor:pointer;">
+  <img src="images/17_cold-3.png" id="cold17-3"
+       onclick="page17Interact()"
+       style="position:absolute; bottom:0%; left:14%; height:39%; opacity:0; cursor:pointer;">
+  <img src="images/17_cold-4.png" id="cold17-4"
+       onclick="page17Interact()"
+       style="position:absolute; bottom:45%; left:34%; height:23%; opacity:0; cursor:pointer;">
+  <img src="images/17_cold-5.png" id="cold17-5"
+       onclick="page17Interact()"
+       style="position:absolute; bottom:90%; left:33%; height:10%; opacity:0; cursor:pointer;">
+
+  <img src="images/17_dots.png" id="dots-17"
+       style="position:absolute; bottom:0%; left:10%; width:55%; pointer-events:none;">
+
+  <img src="images/17_ice-1.png" id="ice17-1"
+       style="position:absolute; bottom:53%; left:0%; height:47%; pointer-events:none;">
+  <img src="images/17_ice-2.png" id="ice17-2"
+       style="position:absolute; bottom:0%; left:34%; height:47%; pointer-events:none;">
+
+  <img src="images/17_thermometer.png" id="thermometer-17"
+       onclick="page17Interact()"
+       style="position:absolute; bottom:10%; left:44%; height:47%; cursor:pointer;">
+       
+    <!-- 18頁物件 -->
+  <img src="images/18_people-1.png" id="people18-1"
+       style="position:absolute; top:0%; left:52%; height:37%;">
+  <img src="images/18_people-2.png" id="people18-2"
+       style="position:absolute; top:62%; left:68%; height:38%;">
+
+  <img src="images/18_basket-1.png" id="basket18-1"
+       style="position:absolute; bottom:79%; left:84%; height:15%;">
+  <img src="images/18_basket-2.png" id="basket18-2"
+       style="position:absolute; bottom:3%; left:55%; height:15%;">
+
+  <!-- 18_maodou-1~40 -->
+  <img src="images/18_maodou-1.png"  id="maodou18-1"  style="position:absolute; bottom:57%; left:51%; height:6%;">
+  <img src="images/18_maodou-2.png"  id="maodou18-2"  style="position:absolute; bottom:55%; left:56%; height:6%;">
+  <img src="images/18_maodou-3.png"  id="maodou18-3"  style="position:absolute; bottom:50%; left:54%; height:6%;">
+  <img src="images/18_maodou-4.png"  id="maodou18-4"  style="position:absolute; bottom:44%; left:51%; height:7%;">
+  <img src="images/18_maodou-5.png"  id="maodou18-5"  style="position:absolute; bottom:36%; left:53%; height:7%;">
+  <img src="images/18_maodou-6.png"  id="maodou18-6"  style="position:absolute; bottom:62%; left:59%; height:3%;">
+  <img src="images/18_maodou-7.png"  id="maodou18-7"  style="position:absolute; bottom:58%; left:62%; height:5%;">
+  <img src="images/18_maodou-8.png"  id="maodou18-8"  style="position:absolute; bottom:51%; left:59%; height:6%;">
+  <img src="images/18_maodou-9.png"  id="maodou18-9"  style="position:absolute; bottom:51%; left:62%; height:4%;">
+  <img src="images/18_maodou-10.png" id="maodou18-10" style="position:absolute; bottom:43%; left:56%; height:6%;">
+  <img src="images/18_maodou-11.png" id="maodou18-11" style="position:absolute; bottom:36%; left:57%; height:5%;">
+  <img src="images/18_maodou-12.png" id="maodou18-12" style="position:absolute; bottom:48%; left:64%; height:8%;">
+  <img src="images/18_maodou-13.png" id="maodou18-13" style="position:absolute; bottom:45%; left:62%; height:5%;">
+  <img src="images/18_maodou-14.png" id="maodou18-14" style="position:absolute; bottom:39%; left:61%; height:4%;">
+  <img src="images/18_maodou-15.png" id="maodou18-15" style="position:absolute; bottom:32%; left:62%; height:5%;">
+  <img src="images/18_maodou-16.png" id="maodou18-16" style="position:absolute; bottom:60%; left:69%; height:5%;">
+  <img src="images/18_maodou-17.png" id="maodou18-17" style="position:absolute; bottom:53%; left:67%; height:8%;">
+  <img src="images/18_maodou-18.png" id="maodou18-18" style="position:absolute; bottom:49%; left:67.5%; height:5%;">
+  <img src="images/18_maodou-19.png" id="maodou18-19" style="position:absolute; bottom:42%; left:68%; height:4%;">
+  <img src="images/18_maodou-20.png" id="maodou18-20" style="position:absolute; bottom:34%; left:66%; height:6%;">
+  <img src="images/18_maodou-21.png" id="maodou18-21" style="position:absolute; bottom:54%; left:75%; height:7%;">
+  <img src="images/18_maodou-22.png" id="maodou18-22" style="position:absolute; bottom:44%; left:75%; height:8%;">
+  <img src="images/18_maodou-23.png" id="maodou18-23" style="position:absolute; bottom:39%; left:74%; height:4%;">
+  <img src="images/18_maodou-24.png" id="maodou18-24" style="position:absolute; bottom:43%; left:78%; height:5%;">
+  <img src="images/18_maodou-25.png" id="maodou18-25" style="position:absolute; bottom:33%; left:80%; height:8%;">
+  <img src="images/18_maodou-26.png" id="maodou18-26" style="position:absolute; bottom:52%; left:78%; height:7%;">
+  <img src="images/18_maodou-27.png" id="maodou18-27" style="position:absolute; bottom:49%; left:80%; height:6%;">
+  <img src="images/18_maodou-28.png" id="maodou18-28" style="position:absolute; bottom:59%; left:82%; height:4%;">
+  <img src="images/18_maodou-29.png" id="maodou18-29" style="position:absolute; bottom:49%; left:83%; height:7%;">
+  <img src="images/18_maodou-30.png" id="maodou18-30" style="position:absolute; bottom:41%; left:83%; height:5%;">
+  <img src="images/18_maodou-31.png" id="maodou18-31" style="position:absolute; bottom:63%; left:83%; height:5%;">
+  <img src="images/18_maodou-32.png" id="maodou18-32" style="position:absolute; bottom:59%; left:87%; height:5%;">
+  <img src="images/18_maodou-33.png" id="maodou18-33" style="position:absolute; bottom:53%; left:86%; height:5%;">
+  <img src="images/18_maodou-34.png" id="maodou18-34" style="position:absolute; bottom:48%; left:87%; height:5%;">
+  <img src="images/18_maodou-35.png" id="maodou18-35" style="position:absolute; bottom:40%; left:87%; height:7%;">
+  <img src="images/18_maodou-36.png" id="maodou18-36" style="position:absolute; bottom:35%; left:84%; height:4%;">
+  <img src="images/18_maodou-37.png" id="maodou18-37" style="position:absolute; bottom:63%; left:90%; height:5%;">
+  <img src="images/18_maodou-38.png" id="maodou18-38" style="position:absolute; bottom:56%; left:90%; height:4%;">
+  <img src="images/18_maodou-39.png" id="maodou18-39" style="position:absolute; bottom:47%; left:89%; height:6%;">
+  <img src="images/18_maodou-40.png" id="maodou18-40" style="position:absolute; bottom:39%; left:91%; height:6%;">
+
+  <img src="images/18_maodou-41.png" id="maodou18-41"
+       style="position:absolute; bottom:38%; left:96%; height:30%;">
+       
+
 </div>
+
+
 
   </div>
 </div>
@@ -969,6 +1310,10 @@
   <button class="nav-btn" id="btn-prev">‹</button>
   <button class="nav-btn" id="btn-next">›</button>
 </div>
+
+
+
+
 
 <script>
 // 預先載入所有音效
@@ -1025,7 +1370,7 @@ $(document).ready(function() {
     display: 'single',
    when: {
   turned: function(e, page) {
-    document.getElementById('page-num').textContent = page + ' / 6';
+    document.getElementById('page-num').textContent = page + ' / 9';
 
     // 顯示點擊提示
    const hints = {
@@ -1034,6 +1379,7 @@ $(document).ready(function() {
      4: 'hint-07',
      5: 'hint-09',
      6: 'hint-11',
+     7: 'hint-13',
    };
 
     Object.keys(hints).forEach(p => {
@@ -1044,6 +1390,39 @@ $(document).ready(function() {
      }
     });
 
+
+
+// 滾輪翻頁
+let wheelTimer = null;
+let wheelCooldown = false;
+
+document.getElementById('book').addEventListener('wheel', function(e) {
+  e.preventDefault();
+
+  const dir = e.deltaY > 0 ? 'next' : 'previous';
+
+  clearTimeout(wheelTimer);
+  wheelTimer = setTimeout(() => {
+    if (wheelCooldown) return;
+    wheelCooldown = true;
+    const currentPage = $('#book').turn('page');
+    const totalPages = $('#book').turn('pages');
+    if (currentPage === 1 || currentPage === totalPages) {
+      setTimeout(() => { wheelCooldown = false; }, 800);
+    }
+    $('#book').turn(dir);
+    if (dir === 'next') {
+      audioFiles.nextPage.currentTime = 0;
+      audioFiles.nextPage.play();
+    } else {
+      audioFiles.prevPage.currentTime = 0;
+      audioFiles.prevPage.play();
+    }
+  }, 300);
+}, { passive: false });
+
+
+
 const hintId = hints[page];
 if(hintId) {
   const hint = document.getElementById(hintId);
@@ -1052,12 +1431,14 @@ if(hintId) {
     hint.style.animation = 'hintPulse 1s ease 3';
   }
 }
+setTimeout(() => { wheelCooldown = false; }, 300);
+
 
     // 翻頁時重置所有動畫
     const resetIds = [
      'car', 'word-09', 'maodou-1', 'maodou-2', 'maodou-3-1', 'maodou-3-2', 
      'maodou-4', 'maodou-5', 'maodou-6', 'maodou-7', 'maodou-8-1', 'maodou-8-2', 'maodou-10', 'maodou-11-1', 'maodou-11-2', 'maodou-12', 'maodou-13', 'maodou-14', 'maodou-15', 
-     'maodou11-1-1', 'maodou11-1-2', 'maodou11-1-3', 'maodou11-1-4', 'maodou11-2', 'plant11-1', 'red', 'bug',
+     'maodou11-1-1', 'maodou11-1-2', 'maodou11-1-3', 'maodou11-1-4', 'maodou11-2', 'plant11-1', 'red', 'bug', 'car-13',
      'truck', 'smoke-1', 'smoke-2', 'smoke-3', 'smoke-4', 'smoke-5',
       'seeder',
       'bird-1', 'bird-2', 'bird-3', 'bird-4', 'bird-5', 'bird-6',
@@ -1068,7 +1449,24 @@ if(hintId) {
       'plant-6-2', 'plant-6-3', 'plant-6-4',
       'moon',
       'star-1', 'star-2', 'star-3', 'star-4',
-      'star-5', 'star-6', 'star-7', 'star-8'
+      'star-5', 'star-6', 'star-7', 'star-8',
+      'machine15-1', 'machine15-2',
+      'maodou15-1', 'maodou15-2', 'maodou15-3', 'maodou15-4', 'maodou15-5',
+      'maodou15-6', 'maodou15-7', 'maodou15-8', 'maodou15-9', 'maodou15-10',
+      'maodou15-11', 'maodou15-12', 'maodou15-13',
+      'water-15', 'word15-1', 'word15-2', 'word15-3',
+      'machine-17', 'maodou-17',
+      'people18-1', 'people18-2', 'basket18-1', 'basket18-2', 'maodou18-41',
+      'maodou18-1', 'maodou18-2', 'maodou18-3', 'maodou18-4', 'maodou18-5',
+      'maodou18-6', 'maodou18-7', 'maodou18-8', 'maodou18-9', 'maodou18-10',
+      'maodou18-11', 'maodou18-12', 'maodou18-13', 'maodou18-14', 'maodou18-15',
+      'maodou18-16', 'maodou18-17', 'maodou18-18', 'maodou18-19', 'maodou18-20',
+      'maodou18-21', 'maodou18-22', 'maodou18-23', 'maodou18-24', 'maodou18-25',
+      'maodou18-26', 'maodou18-27', 'maodou18-28', 'maodou18-29', 'maodou18-30',
+      'maodou18-31', 'maodou18-32', 'maodou18-33', 'maodou18-34', 'maodou18-35',
+      'maodou18-36', 'maodou18-37', 'maodou18-38', 'maodou18-39', 'maodou18-40',
+      'cold17-1', 'cold17-2', 'cold17-3', 'cold17-4', 'cold17-5',
+      'dots-17', 'ice17-1', 'ice17-2', 'thermometer-17',
     ];
 
     // 所有音效 fade out 停止
@@ -1118,6 +1516,29 @@ if(hintId) {
     maodou11ShockAnimating = false;
     maodou11SwayAnimating = false;
     bugAnimating = false;
+    truck13Animating = false;
+   ['maodou13-1','maodou13-2','maodou13-3'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) { el.style.animation = 'none'; el.style.opacity = '1'; }
+   });
+   ['maodou13-4','maodou13-5'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) { el.style.animation = 'none'; el.style.transform = ''; }
+   });
+    machine15Animating = false;
+    machine152Animating = false;
+    const water15 = document.getElementById('water-15');
+    if(water15) { water15.style.animation = 'none'; water15.style.opacity = '0'; }
+   ['maodou15-1','maodou15-2','maodou15-3','maodou15-4','maodou15-5','maodou15-6','maodou15-7'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) { el.style.animation = 'none'; el.style.opacity = '0'; el.style.transform = ''; }
+     });
+   ['word15-1','word15-2','word15-3'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) { el.style.animation = 'none'; el.style.opacity = '0'; el.style.transform = ''; }
+    });
+  
+
   }
 }
   });
@@ -1760,6 +2181,226 @@ function bugInteract() {
     bugAnimating = false;
   }, 3000);
 }
+
+// ====== 13 卡車互動 ======
+let truck13Animating = false;
+
+function truck13Interact() {
+  if(truck13Animating) return;
+  truck13Animating = true;
+
+  const car13 = document.getElementById('car-13');
+  car13.style.animation = 'none';
+  void car13.offsetWidth;
+  car13.style.animation = 'carShake 3s linear';
+
+  const maodous = [1, 2, 3].map(n => document.getElementById('maodou13-' + n));
+
+  // 觸發時先全部同步消失，避免第二次觸發第一輪怪掉
+  maodous.forEach(el => {
+    el.style.animation = 'none';
+    el.style.opacity = '0';
+  });
+
+  function runCycle(startDelay, keepVisible) {
+    maodous.forEach((el, i) => {
+      setTimeout(() => {
+        el.style.animation = 'none';
+        void el.offsetWidth;
+        el.style.animation = 'maodouFadeIn 0.3s ease forwards';
+      }, startDelay + i * 200);
+    });
+    if (!keepVisible) {
+      setTimeout(() => {
+        maodous.forEach(el => {
+          el.style.animation = 'none';
+          el.style.opacity = '0';
+        });
+      }, startDelay + 800);
+    }
+  }
+
+  runCycle(0, false);
+  runCycle(1000, false);
+  runCycle(2000, true);
+
+  // 毛豆 4、5 葉子搖擺
+  const leaf4 = document.getElementById('maodou13-4');
+  const leaf5 = document.getElementById('maodou13-5');
+  [leaf4, leaf5].forEach((el, i) => {
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = `leafSway 3s ease-in-out ${i * 0.4}s`;
+  });
+
+  setTimeout(() => {
+    car13.style.animation = '';
+    truck13Animating = false;
+  }, 3000);
+}
+
+// ====== 15 機器互動 ======
+let machine15Animating = false;
+
+function machine15Interact() {
+  if(machine15Animating) return;
+  machine15Animating = true;
+
+  const m = document.getElementById('machine15-1');
+  m.style.animation = 'none';
+  void m.offsetWidth;
+  m.style.animation = 'conveyorVibrate 0.6s ease-in-out infinite';
+
+  [8,9,10,11,12,13].forEach((n, i) => {
+    const el = document.getElementById('maodou15-' + n);
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = `maodouVibrate 0.6s ease-in-out ${i * 0.05}s infinite`;
+  });
+
+  setTimeout(() => {
+    m.style.animation = '';
+    [8,9,10,11,12,13].forEach(n => {
+      document.getElementById('maodou15-' + n).style.animation = '';
+    });
+    machine15Animating = false;
+  }, 3000);
+}
+
+[8,9,10,11,12,13].forEach(n => {
+  document.getElementById('maodou15-' + n).addEventListener('click', machine15Interact);
+});
+
+// ====== 15 噴管互動 ======
+let machine152Animating = false;
+
+function machine152Interact() {
+  if(machine152Animating) return;
+  machine152Animating = true;
+
+  const m = document.getElementById('machine15-2');
+  m.style.animation = 'none';
+  void m.offsetWidth;
+  m.style.animation = 'nozzleSpray 0.8s ease-in-out 1';
+
+  // 先把水清掉，再重新噴
+  const water = document.getElementById('water-15');
+  water.style.animation = 'none';
+  water.style.opacity = '0';
+  water.style.transform = '';
+
+  setTimeout(() => {
+    void water.offsetWidth;
+    water.style.animation = 'waterSpray 0.6s ease-out forwards';
+
+    const dirs = [
+      [15, -15], [0, -20], [-15, -15],
+      [15, -15], [0, -20], [0, -20], [-15, -15]
+    ];
+    [1,2,3,4,5,6,7].forEach((n, i) => {
+      const el = document.getElementById('maodou15-' + n);
+      const r1 = (Math.random() * 10 - 5).toFixed(1);
+      const r2 = (Math.random() * 8 - 4).toFixed(1);
+      el.style.setProperty('--dx', dirs[i][0] + 'px');
+      el.style.setProperty('--dy', dirs[i][1] + 'px');
+      el.style.setProperty('--r1', r1 + 'deg');
+      el.style.setProperty('--r2', r2 + 'deg');
+      el.style.animation = 'none';
+      void el.offsetWidth;
+      el.style.animation = 'maodouPop 1.3s ease-out forwards';
+    });
+    const wordDirs = [
+      [15, -15],
+      [-15, -15],
+      [0, -20],
+      ];
+      [1,2,3].forEach((n, i) => {
+     const el = document.getElementById('word15-' + n);
+      el.style.setProperty('--dx', wordDirs[i][0] + 'px');
+      el.style.setProperty('--dy', wordDirs[i][1] + 'px');
+      el.style.setProperty('--r1', '0deg');
+      el.style.setProperty('--r2', '0deg');
+      el.style.animation = 'none';
+      void el.offsetWidth;
+      el.style.animation = 'maodouPop 0.9s ease-out forwards';
+    });
+
+
+  }, 150);
+
+  setTimeout(() => {
+    m.style.animation = '';
+    machine152Animating = false;
+  }, 800);
+}
+
+
+// ====== 17 冷凍互動 ======
+let page17Animating = false;
+
+function page17Interact() {
+  if(page17Animating) return;
+  page17Animating = true;
+
+  const coldAnims = [
+    ['cold17-1', 'fadeFromUpperLeft'],
+    ['cold17-2', 'fadeFromLowerLeft'],
+    ['cold17-3', 'fadeFrom5Clock'],
+    ['cold17-4', 'fadeInPlace'],
+    ['cold17-5', 'fadeFromAbove'],
+  ];
+
+  function runColdCycle(startDelay) {
+    coldAnims.forEach(([id, anim], i) => {
+      const el = document.getElementById(id);
+      setTimeout(() => {
+        el.style.animation = 'none';
+        void el.offsetWidth;
+        el.style.animation = `${anim} 0.6s ease-out forwards`;
+      }, startDelay + i * 100);
+    });
+  }
+
+  runColdCycle(0);
+  runColdCycle(800);
+
+    // 毛豆顫抖，第二輪噴霧後觸發
+  setTimeout(() => {
+    const m = document.getElementById('maodou-17');
+    m.style.animation = 'none';
+    void m.offsetWidth;
+     m.style.animation = 'maodou17Shiver 0.4s ease-out 3';
+  }, 200);
+
+    // 溫度計顫抖
+  setTimeout(() => {
+    const t = document.getElementById('thermometer-17');
+    t.style.animation = 'none';
+    void t.offsetWidth;
+     t.style.animation = 'thermometerShiver 0.4s ease-out 3';
+  }, 250);
+
+    // 冰晶閃爍
+  setTimeout(() => {
+    const ice1 = document.getElementById('ice17-1');
+    const ice2 = document.getElementById('ice17-2');
+    ice1.style.animation = 'none';
+    void ice1.offsetWidth;
+    ice1.style.animation = 'iceTwinkle1 0.8s ease-in-out 2';
+
+    ice2.style.animation = 'none';
+    void ice2.offsetWidth;
+    ice2.style.animation = 'iceTwinkle2 0.8s ease-in-out 2';
+  }, 200);
+
+  setTimeout(() => {
+    page17Animating = false;
+  }, 1500);
+
+
+}
+
+
 
 </script>
 
